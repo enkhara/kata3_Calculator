@@ -23,17 +23,27 @@ class CalcDisplay(ttk.Frame):
         s = ttk.Style()
         s.theme_use('alt')
         #configuracion que se aplicara a ttk lable
-        s.configure('my.TLabel', font='Helvetica 36')
+        s.configure('my.TLabel', font='Helvetica 30')
 
         self.lblDisplay = ttk.Label(self, text=self._value, style='my.TLabel', anchor=E, foreground='white', background='black')
         self.lblDisplay.pack(fill=BOTH, expand=True)
 
     def addDigit(self, digito):
+       
+
 
         #para controlar el maximo de caracteres que entran en la calculadora a un maximo de 10
+        if self._value[0] != '-' and len(self._value) >= 10 or len(self._value)>= 11:
+            return
+        '''
+         if self._value[0] == '-':
+            longmax = 11
+        esle:
+            longmax = 10
+
         if len(self._value) == 10:
             return
-
+        '''
         if self._value == '0':
             self._value = digito
         else:
